@@ -1,0 +1,35 @@
+<template name="basicform">
+<div class="container">
+<header>
+<h1>Chat Window</h1>
+
+	
+	{{>loginButtons}}
+	  
+	  {{#if currentUser}}
+	  
+	  <ul class="vv2">
+	  {{#each display_all_users}}
+        <!--<li><a href="{{pathFor route='chatwindow'}}"><span class="vv1">{{username}}</span></a></li>-->
+		<li><a href="/chatwindow/{{this._id}}"><span class="vv1">{{username}}</span></a></li>
+		
+      {{/each}}
+	  
+	  </ul>
+	  
+	  <!--
+	  <form class="new_task">
+        <input type="text" name="text" placeholder="Type to add new tasks" />
+      </form>
+	  <button class="btn btn-success js-delete">clear all </button>
+	  -->
+	  {{/if}}
+
+  <!--<form class="new_task">
+        <input type="text" name="text" placeholder="Type to add new tasks" />
+  </form>-->
+  
+  
+</header>
+</div>
+</template>

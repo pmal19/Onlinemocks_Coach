@@ -1,0 +1,13 @@
+<template name="displaypage">
+	<h1>Chat: </h1> 
+ <ul class="vip1">
+	  <form class="enter_message">
+        <input type="text" name="text" placeholder="Type to add new tasks" />
+      </form>
+      <li class="vip2">
+	  {{#each display_messages}} <br><br>
+		{{name}}:{{abc}}  <!--<br>{{return_var}}<br><br>-->        <!--<br>{{owner}}:::<br>:::{{second}}<br><br>-->
+      {{/each}}	  
+	  </li>
+ </ul>
+</template>
