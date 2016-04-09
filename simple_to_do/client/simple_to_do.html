@@ -1,0 +1,106 @@
+<head>
+  <title>Todo List</title>
+</head>
+ 
+<body>
+  
+ 
+    
+  
+</body>
+<template name="ApplicationLayout">
+{{> yield "navbar"}}
+{{> yield "main"}}
+{{> yield "chat"}}  
+</template>
+
+
+
+
+
+
+<template name="listPage">
+<h1>chat:</h1>
+
+<ul>
+  <form class="new-message">
+    <input type="text" name="text" placeholder="" />
+    
+  </form>
+  
+  
+<li>
+  {{#each display_messages}}
+  {{username}}:{{text}}<br>
+  {{/each}}
+
+  </li>
+  </ul>
+
+  
+</template>
+
+
+
+
+
+<template name="form">
+ <header>
+      <h1>Hello from India</h1>
+        <form class="new-task">
+          <input type="text" name="text" placeholder="Your Comments" />
+          <input type="text" name="name" placeholder="Type your name" />
+          <button class="submit">submit</button>
+        </form>
+      <br>
+    <a href="/form/task" class="btn btn-info">SEE COMMENTS</a>
+  </header>
+</template>
+
+
+
+<template name="welcome">
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Welcome to the form {{username}}</h1>
+      <a href="/form" class="btn btn-info">ENTER</a>
+    </div>
+  </div>    
+ </template>     
+<template name="navbar">
+ <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container1">
+    {{>loginButtons}}
+   </div>
+ </nav>
+ </template>
+
+
+
+
+<template name="task">
+{{#if currentUser}}
+<ol>{{#each tasks}}
+<div>
+<li>Name:{{name}}</li>
+<li>Comments:{{text}}</li>
+<li>Time:{{createdAt}}</li>
+<li class="{{#if checked}}checked{{/if}}">
+    <button class="delete">&times;</button>
+     <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+</li>
+</div>
+{{/each}}
+</ol>
+{{/if}}
+</template>
+
+
+<template name="chat">
+{{#if currentUser}}
+<ol>{{#each display_user}}
+<li class="container1"><a href="/chatwindow/{{_id}}"><span>{{username}}</span></a></li>
+{{/each}}
+</ol>
+{{/if}}
+</template>
