@@ -1,0 +1,60 @@
+<head>
+    <title>MeteorChat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+</body>
+
+<template name= "ApplicationLayout">
+    {{>yield "navbar"}}
+    {{>yield "main"}} 
+</template>
+
+<template name = "navbar">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <nav class="navbar navbar-header">
+                <a href = "{{pathFor 'allUsers'}}" class = "btn btn-info">All Users</a>
+            </nav>
+            <ul class="nav navbar-nav navbar-right">
+                {{> loginButtons align = "right"}}
+                {{#if currentUser}}
+                <p>
+                    <a href="#">Welcome  {{username}}</a>
+                </p>
+                {{/if}}
+
+            </ul>
+        </div>
+    </nav>
+</template>
+
+<template name = "tempusers">
+	<h3>Chat Window!</h3>
+  {{#if currentUser}}
+   	<ul class = "showUsers">
+   		{{#each users}}
+   			<li>
+   				<a href = "/chatTime/:{{_id}}">{{username}}</a>
+   			</li>
+   		{{/each}}
+  	</ul>
+  {{/if}}
+</template>
+
+<template name="userPage">
+	<h3>Chat: </h3>
+
+	<ul class>
+  	<form class="message">
+    	<input type="text" name="text" placeholder="New Message" />
+    </form>
+  	<li>
+  		{{#each display_messages}}
+  			{{name}}:{{text}}<br>
+  		{{/each}}
+  	</li>
+  </ul>
+</template>
