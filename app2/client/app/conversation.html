@@ -1,0 +1,15 @@
+<template name="convo">
+	{{#each presentname}} <strong>{{username}}'s  Window </strong> {{/each}}
+	<ul>
+
+	  <p> Message : 
+	  	<form class="new-message"> <input type="text" name="msg" placeholder="" /> <input type="submit" value="Submit">
+	  </form>
+	</p>
+		
+		  {{#each dismsg}}
+		  <li>{{name}}:<strong>{{text}}</strong><br></li>
+		  {{/each}}
+		
+	  </ul>
+</template>

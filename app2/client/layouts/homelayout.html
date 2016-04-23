@@ -1,0 +1,12 @@
+<template name="homelayout">
+	{{> header}}
+	<main>
+
+		<div class="billboard">
+			<h2>Chat with your friends here!</h2>
+			{{#if currentUser}}
+			<a href="/chat">Enter Chatroom</a>
+			{{/if}}
+		</div>
+	</main>
+</template>	
