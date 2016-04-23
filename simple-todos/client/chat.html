@@ -1,0 +1,34 @@
+<template name="displaypage">
+	<div class="container">
+		<header>
+			<h1>Chat Window</h1>
+    </header>
+			{{>loginButtons}}
+
+      <br><br>
+      {{#if currentUser}}
+        <ol>{{#each users}}
+              <li><a href="/list_page/{{this._id}}">{{username}}</a></li>
+            {{/each}}
+        </ol>
+      {{/if}}
+		
+	</div>
+</template>
+
+<template name="list_page">
+  <h1>Chat</h1>
+  <ul>
+    <form class="new_message">
+      <input type="text" name="text" placeholder="" />
+    </form>
+
+  <li>
+
+    {{#each display_messages}}
+    <li>helllo</li>
+    {{username}}:{{text}}<br>
+    {{/each}}
+  </li>
+</ul>
+</template>
