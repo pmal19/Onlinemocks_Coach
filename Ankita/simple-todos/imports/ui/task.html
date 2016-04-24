@@ -1,0 +1,128 @@
+
+<template name="home">
+  <h1>WELCOME!</h1>
+</template>
+
+
+<template name="form">
+  <div id="form" class="row row-content">
+      <div class="col-xs-12">
+        <h3>Enter your Post</h3> 
+      </div>
+      <div class="col-xs-12 col-sm-9">
+        <form class="form-horizontal new-task" role="form">
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" placeholder="Enter Your Name">
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="post" class="col-sm-2 control-label">Your Post</label>
+              <div class="col-sm-10">
+                <textarea class="form-control" type="submit" name="text" placeholder="Type to add new posts"  rows="12" cols="20" wrap="hard"></textarea>
+              </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary">Submit Post</button>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</template>
+
+
+
+<template name="task">
+  {{#if currentUser}}
+
+    <div class="container">
+
+      <div id="posts" class="row row-content">
+        <div class="col-xs-12 col-sm-9">
+          <ul class="abc">
+          
+            {{#each tasks}}
+              <li>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                  <button class="delete">&times;</button>
+
+                  <p style="margin-bottom:40px;"></p>
+                  <p class="date">{{createdAt}}</p>
+                  <h4 class="name"><b>{{username}}</b></h4>
+                  <span class="text">{{{text}}}</span>
+                  </div>
+                </div>
+              </li>
+            {{/each}}
+            
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  {{/if}}
+</template>
+
+<template name="chat">
+  
+  {{#if currentUser}}
+    {{#each list}}
+
+      <li>
+        <div class="user">
+          <b><a href="{{pathFor route='messages'}}">{{username}}</a></b>
+        </div>
+      </li>
+
+    {{/each}}
+  {{/if}}
+
+</template>
+              
+
+<template name="messages">
+
+  <div class="container">
+      <div id="form2" class="row row-content">
+        <div class="col-xs-12">
+          <h3>Enter your Message</h3> 
+        </div>
+
+        <div class="col-xs-12 col-sm-9">
+          <form class="form-horizontal new_message" role="form">
+            <div class="form-group">
+              <label for="msg" class="col-sm-2 control-label">Message</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="text" placeholder="Type to add new messages" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Send</button>
+              </div>
+            </div>
+
+          </form>  
+        </div>
+      </div>
+
+      <div id="msg" class="row row-content">
+          <div class="col-xs-12 col-sm-9">
+
+            {{#each msgs}} 
+              <p class="date">{{createdAt}}</p>
+              <h4 class="name"><b>{{username}}</b></h4>
+              <span class="text">{{{txt}}}</span>
+            {{/each}}   
+
+          </div>
+      </div>
+    </div>
+
+
+</template>
