@@ -1,7 +1,6 @@
 Messages = new Mongo.Collection("messages");
 Meteor.subscribe("users");
 
-
 Router.configure({
   layoutTemplate: 'ApplicationLayout'
 });
@@ -10,12 +9,16 @@ Router.route('/', function () {
   this.render('navbar', {
     to:"navbar"
   });
+
+  this.render('Welcome',{
+    to:"main"
+  });
 });
 
 Router.route('/users', function () {
-  /*this.render('navbar', {
+  this.render('navbar', {
     to:"navbar"
-  });*/
+  });
   this.render('tempusers',{
     to:"main"
   });
@@ -25,7 +28,6 @@ Router.route('/chatTime/:_id',{
   template: 'userPage',
   data: function(){
       var currentList = this.params._id;
-      console.log(currentList);
       Meteor.subscribe("display_messages",currentList);
   }
 }, {name:'chatWindow'});
@@ -39,15 +41,25 @@ Template.navbar.helpers({
   username:function() {
     if(Meteor.user())
     {
-      return Meteor.user().username;
+      return Meteor.user().username || Meteor.user().profile.name;
     }
   }
 });
 
+Template.Welcome.helpers({
+  username:function() {
+    if(Meteor.user())
+    {
+      return Meteor.user().username || Meteor.user().profile.name;
+    }
+  }
+});
+
+
 Template.tempusers.helpers({
   users:function() {
     console.log("checkuser");
-    return Meteor.users.find();
+    return Meteor.users.find() //&& Meteor.user().services.facebook;
   }
 });
 

@@ -16,14 +16,14 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <nav class="navbar navbar-header">
+              {{#if currentUser}}
                 <a href = "{{pathFor 'allUsers'}}" class = "btn btn-info">All Users</a>
+              {{/if}}
             </nav>
             <ul class="nav navbar-nav navbar-right">
                 {{> loginButtons align = "right"}}
                 {{#if currentUser}}
-                <p>
-                    <a href="#">Welcome  {{username}}</a>
-                </p>
+                <p>Welcome  {{username}}</p>
                 {{/if}}
 
             </ul>
@@ -31,17 +31,31 @@
     </nav>
 </template>
 
+<template name = "Welcome">
+  <div class = "hello">
+    {{#if currentUser}}
+      <p>Welcome {{username}}</p>
+      {{else}}
+      <p>Please Login to continue</p>
+    {{/if}}
+  </div>
+  
+</template>
+
+
 <template name = "tempusers">
-	<h3>Chat Window!</h3>
-  {{#if currentUser}}
-   	<ul class = "showUsers">
-   		{{#each users}}
-   			<li>
-   				<a href = "/chatTime/:{{_id}}">{{username}}</a>
-   			</li>
-   		{{/each}}
-  	</ul>
-  {{/if}}
+	<div class = "useer">
+   <h3>Chat Window!</h3>
+    {{#if currentUser}}
+   	  <ul class = "showUsers">
+   		 {{#each users}}
+   		 	 <li>
+   			  	<a href = "/chatTime/:{{_id}}">{{_id}}</a>
+   			 </li>
+   		 {{/each}}
+  	  </ul>
+    {{/if}}
+  </div>
 </template>
 
 <template name="userPage">
