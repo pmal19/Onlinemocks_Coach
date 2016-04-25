@@ -1,0 +1,18 @@
+<template name = "navbar">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <nav class="navbar navbar-header">
+              {{#if currentUser}}
+                <a href = "{{pathFor 'allUsers'}}" class = "btn btn-info">All Users</a>
+              {{/if}}
+            </nav>
+            <ul class="nav navbar-nav navbar-right">
+                {{> loginButtons align = "right"}}
+                {{#if currentUser}}
+                <p>Welcome  {{username}}</p>
+                {{/if}}
+
+            </ul>
+        </div>
+    </nav>
+</template>
