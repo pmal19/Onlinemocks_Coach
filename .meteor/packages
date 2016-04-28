@@ -24,3 +24,6 @@ service-configuration
 twbs:bootstrap
 underscore
 accounts-facebook
+aldeed:autoform
+aldeed:collection2
+mattimo:emoticons
