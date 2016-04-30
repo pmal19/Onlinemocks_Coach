@@ -1,13 +1,6 @@
+Messages = new Mongo.Collection("messages");
+
 var second_person;
-
-Accounts.onCreateUser (function(options, user){
-  if (user.services.facebook){
-    data = user.services.facebook;
-    user.username = data.username;
-    return user;
-  }
-});
-
 
 Messages.allow({
   insert: function (userId, doc) {
@@ -26,10 +19,6 @@ Messages.allow({
 });
 
 
-  
-Meteor.publish("users",function(){
- return Meteor.users.find(); 
-});
 
 Meteor.publish("display_messages",function(variable1){
   console.log(variable1);
@@ -47,4 +36,25 @@ Meteor.publish("display_messages",function(variable1){
           }
         ]   
   });
+});
+
+  
+Meteor.publish("users",function(){
+ return Meteor.users.find(); 
+});
+
+Meteor.methods({
+  sendMessage: function (text,second_person) {
+    if (! Meteor.userId()) {
+      throw new Meteor.Error("User Not Found");
+    }
+  
+    Messages.insert({
+      text: text,
+      createdAt: new Date(),
+      owner: Meteor.userId(),
+      name: Meteor.user().username,
+      second: second_person
+    });
+  }
 });
